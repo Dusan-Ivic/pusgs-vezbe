@@ -1,0 +1,11 @@
+.logo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 250px;
+  background-color: #aaa;
+}
+
+.logo-item img {
+  width: 200px;
+}
