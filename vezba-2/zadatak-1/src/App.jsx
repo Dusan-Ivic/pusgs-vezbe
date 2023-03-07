@@ -1,28 +1,17 @@
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import LogoList from "./components/LogoList/LogoList";
-import AngularLogo from "./assets/angular.png";
-import ReactLogo from "./assets/react.png";
-import VueLogo from "./assets/vue.png";
-
-const logos = [
-  {
-    name: "Angular",
-    image: AngularLogo,
-  },
-  {
-    name: "React",
-    image: ReactLogo,
-  },
-  {
-    name: "Vue",
-    image: VueLogo,
-  },
-];
+import LogoItem from "./components/LogoItem/LogoItem";
 
 function App() {
   return (
     <div className="App">
-      <LogoList logos={logos} />
+      <Routes>
+        <Route path="/logos">
+          <Route index element={<LogoList />} />
+          <Route path=":name" element={<LogoItem />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

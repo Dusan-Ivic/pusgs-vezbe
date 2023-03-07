@@ -1,7 +1,12 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import "./LogoItem.css";
+import { logos } from "../../data/logos";
 
-const LogoItem = ({ name, image }) => {
+const LogoItem = () => {
+  const { name } = useParams();
+  const image = logos.find((l) => l.name === name).image;
+
   return (
     <div className="logo-item">
       <h1>{name}</h1>

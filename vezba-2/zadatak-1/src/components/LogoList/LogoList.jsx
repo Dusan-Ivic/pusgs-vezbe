@@ -1,12 +1,15 @@
 import React from "react";
-import LogoItem from "../LogoItem/LogoItem";
+import { Link } from "react-router-dom";
 import "./LogoList.css";
+import { logos } from "../../data/logos";
 
-const LogoList = (props) => {
+const LogoList = () => {
   return (
     <div className="logo-list">
-      {props.logos.map((logo, index) => (
-        <LogoItem key={index} name={logo.name} image={logo.image} />
+      {logos.map((logo, index) => (
+        <Link key={index} to={`/logos/${logo.name}`}>
+          {logo.name}
+        </Link>
       ))}
     </div>
   );
