@@ -1,0 +1,16 @@
+.form-container {
+  background-color: #aaa;
+  padding: 30px 40px;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+.form-group label {
+  display: block;
+}
+
+.form-group button {
+  padding: 3px 10px;
+}

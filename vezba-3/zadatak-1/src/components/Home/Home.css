@@ -1,0 +1,13 @@
+.products-container {
+  background-color: #aaa;
+  padding: 30px 40px;
+}
+
+.products-list {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.products-list-item {
+  margin: 5px 0;
+}
