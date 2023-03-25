@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Zadatak1.Interfaces;
+using Zadatak1.Services;
 
 namespace Zadatak1
 {
@@ -32,6 +34,10 @@ namespace Zadatak1
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zadatak1", Version = "v1" });
             });
+
+            services.AddSingleton<ISingletonProfessorService, ProfessorService>();
+            services.AddScoped<IScopedStudentService, StudentService>();
+            services.AddScoped<IScopedGetterService, GetterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
