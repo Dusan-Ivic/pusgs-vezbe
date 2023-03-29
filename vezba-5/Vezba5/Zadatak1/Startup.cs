@@ -1,7 +1,9 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +13,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Zadatak1.Data;
+using Zadatak1.Interfaces;
+using Zadatak1.Mapping;
+using Zadatak1.Services;
 
 namespace Zadatak1
 {
@@ -32,6 +38,19 @@ namespace Zadatak1
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zadatak1", Version = "v1" });
             });
+
+            MapperConfiguration mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IProfessorService, ProfessorService>();
+
+            services.AddDbContext<FacultyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("FacultyConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
